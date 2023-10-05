@@ -5,6 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class CharactersDomainModel(
-
     val results: List<CharacterDomainModel>? = null,
 ) : Parcelable

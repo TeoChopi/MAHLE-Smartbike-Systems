@@ -1,7 +1,6 @@
 package com.mahle.smartbikesystems.features.characters.data.model
 
 import com.google.gson.annotations.SerializedName
-import com.mahle.smartbikesystems.features.characters.domain.model.CharacterDomainModel
 import com.mahle.smartbikesystems.features.characters.domain.model.CharactersDomainModel
 
 data class ResponseCharactersDataModel(
@@ -176,3 +175,4 @@ fun ResponseCharactersDataModel.toCharters(): CharactersDomainModel =
     CharactersDomainModel(
         results = data?.results?.map { it.toCharter() }
     )
+

@@ -1,4 +1,4 @@
-package com.mahle.smartbikesystems.features.characters.data.model
+package com.mahle.smartbikesystems.features.character.data.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -15,4 +15,13 @@ data class CharacterDataModel(
 
     @field:SerializedName("thumbnail")
     val thumbnail: Thumbnail? = null,
+)
+
+data class Thumbnail(
+
+    @field:SerializedName("path")
+    val path: String? = null,
+
+    @field:SerializedName("extension")
+    val extension: String? = null,
 )

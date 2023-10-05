@@ -3,11 +3,11 @@ package com.mahle.smartbikesystems.features.characters.domain.presentation
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mahle.smartbikesystems.R
 import com.mahle.smartbikesystems.core.presentation.Base
 import com.mahle.smartbikesystems.databinding.FragmentCharactersBinding
-import com.mahle.smartbikesystems.features.characters.domain.model.CharactersDomainModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -25,12 +25,11 @@ class CharactersFragment : Base.BaseFragment<FragmentCharactersBinding>(R.layout
 
     private fun setupRecycler() = binding.run {
         adapter = CharactersAdapter(listOf()) { characterId ->
-            /*findNavController().navigate(
-                    PromotionalCodeListFragmentDirections.actionPromotionalCodeListFragmentToConditionsInviteFriendFragment(
-                        mgmCode
+            findNavController().navigate(
+                    CharactersFragmentDirections.actionCharactersFragmentToCharacterFragment(
+                        id = characterId
                     )
-                )*/
-
+                )
         }
         rvCharacters.layoutManager = LinearLayoutManager(requireContext())
         rvCharacters.adapter = adapter

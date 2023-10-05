@@ -1,4 +1,4 @@
-package com.mahle.smartbikesystems.features.characters.domain.model
+package com.mahle.smartbikesystems.features.character.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -10,5 +10,5 @@ data class CharacterDomainModel(
     val name: String? = null,
     val description: String? = null,
     val thumbnailPath: String? = null,
-    val thumbnailExtension: String? = null,
+    val thumbnailExtension: String? = null
 ) : Parcelable

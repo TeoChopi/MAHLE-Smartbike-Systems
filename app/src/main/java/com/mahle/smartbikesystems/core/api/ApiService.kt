@@ -1,8 +1,7 @@
 package com.mahle.smartbikesystems.core.api
 
-import com.mahle.smartbikesystems.features.characters.data.model.ResponseCharacterDataModel
+import com.mahle.smartbikesystems.features.character.data.model.ResponseCharacterDataModel
 import com.mahle.smartbikesystems.features.characters.data.model.ResponseCharactersDataModel
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
