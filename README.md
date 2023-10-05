@@ -17,8 +17,8 @@
 - [GSON Converter](https://github.com/square/retrofit/tree/master/retrofit-converters/gson) - A Converter which uses Moshi for serialization to and from JSON.
  
 # Package structure:
-![Structure](./Users/teo/AndroidStudioProjects/Mahle_Smartbike_Systems/structure.jpg)
+![Structure](structure.png)
 
 # Architecture:
 This app uses [Clean Architecture](https://medium.com/android-dev-hacks/detailed-guide-on-android-clean-architecture-9eab262a9011).
-![Architecture](https://github.com/MathRoda/DashCoin/blob/master/art/clean-arch.jpeg)
+![Architecture](clean-arch.jpeg)
