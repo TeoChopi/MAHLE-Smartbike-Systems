@@ -14,12 +14,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CharactersViewModel @Inject constructor(
-    private val getCharactersUseCase: GetCharactersUseCase,
+    getCharactersUseCase: GetCharactersUseCase,
 ) : ViewModel() {
     private val _state = MutableStateFlow(CharactersState())
     val state = _state.asStateFlow()
 
-    fun getCharacters() {
+    init {
         getCharactersUseCase().onEach { result ->
             when(result) {
                 is Resource.Loading -> _state.value = CharactersState(loading = true)
