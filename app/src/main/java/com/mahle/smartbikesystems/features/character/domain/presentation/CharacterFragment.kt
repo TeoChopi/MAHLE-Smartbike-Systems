@@ -2,7 +2,9 @@ package com.mahle.smartbikesystems.features.character.domain.presentation
 
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.mahle.smartbikesystems.R
@@ -24,22 +26,23 @@ class CharacterFragment : Base.BaseFragment<FragmentCharacterBinding>(R.layout.f
 
     private fun initStatusCollect() = binding.run {
         lifecycleScope.launch {
-            viewModel.state.collect { state ->
-                progressBar.isVisible = state.loading
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.state.collect { state ->
+                    progressBar.isVisible = state.loading
 
-                state.characterDomainModel?.let { result ->
-                    txtName.text = result.name
-                    txtDescription.text = result.description
-                    val url = result.thumbnailPath.plus(".").plus(result.thumbnailExtension)
-                    Glide.with(requireContext()).load(url)
-                        .circleCrop()
-                        .placeholder(R.drawable.ic_launcher_foreground)
-                        .into(image)
+                    state.characterDomainModel?.let { result ->
+                        txtName.text = result.name
+                        txtDescription.text = result.description
+                        val url = result.thumbnailPath.plus(".").plus(result.thumbnailExtension)
+                        Glide.with(requireContext()).load(url)
+                            .placeholder(R.drawable.ic_launcher_foreground)
+                            .into(image)
 
-                }
+                    }
 
-                state.error?.also {
-                    txtError.text = it.message
+                    state.error?.also {
+                        txtError.text = it.message
+                    }
                 }
             }
         }
