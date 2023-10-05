@@ -1,5 +1,7 @@
 package com.mahle.smartbikesystems.core.di
 
+import com.mahle.smartbikesystems.features.character.data.repository.CharacterRepository
+import com.mahle.smartbikesystems.features.character.data.repository.GetCharacterRepositoryImpl
 import com.mahle.smartbikesystems.features.characters.data.repository.CharactersRepository
 import com.mahle.smartbikesystems.features.characters.data.repository.GetCharactersRepositoryImpl
 import dagger.Binds
@@ -13,5 +15,9 @@ import dagger.hilt.android.scopes.ViewModelScoped
 interface RepositoryModule {
     @Binds
     @ViewModelScoped
-    fun providerProfileRepository(impl: GetCharactersRepositoryImpl): CharactersRepository
+    fun providerCharactersRepository(impl: GetCharactersRepositoryImpl): CharactersRepository
+
+    @Binds
+    @ViewModelScoped
+    fun providerCharacterRepository(impl: GetCharacterRepositoryImpl): CharacterRepository
 }

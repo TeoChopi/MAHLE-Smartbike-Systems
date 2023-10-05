@@ -1,7 +1,7 @@
-package com.mahle.smartbikesystems.features.characters.data.model
+package com.mahle.smartbikesystems.features.character.data.model
 
 import com.google.gson.annotations.SerializedName
-import com.mahle.smartbikesystems.features.characters.domain.model.CharacterDomainModel
+import com.mahle.smartbikesystems.features.character.domain.model.CharacterDomainModel
 
 data class ResponseCharacterDataModel(
 
@@ -45,11 +45,11 @@ data class DataCharter(
     val results: List<CharacterDataModel>? = null,
 )
 
-fun CharacterDataModel.toCharter(): CharacterDomainModel =
+fun ResponseCharacterDataModel.toCharter(): CharacterDomainModel =
     CharacterDomainModel(
-        id = id,
-        name = name,
-        description = description,
-        thumbnailPath = thumbnail?.path,
-        thumbnailExtension = thumbnail?.extension,
+        id = data?.results?.get(0)?.id,
+        name = data?.results?.get(0)?.name,
+        description = data?.results?.get(0)?.description,
+        thumbnailPath = data?.results?.get(0)?.thumbnail?.path,
+        thumbnailExtension = data?.results?.get(0)?.thumbnail?.extension,
     )

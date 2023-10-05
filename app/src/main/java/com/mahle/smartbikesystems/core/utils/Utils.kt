@@ -1,9 +1,8 @@
 package com.mahle.smartbikesystems.core.utils
 
 import com.mahle.smartbikesystems.BuildConfig
+import com.mahle.smartbikesystems.core.extensions.toMD5
 import kotlinx.datetime.Clock
-import java.math.BigInteger
-import java.security.MessageDigest
 
 object Common {
 
@@ -15,7 +14,7 @@ object Common {
         return BuildConfig.PUBLIC_KEY
     }
 
-    fun getPrivateApiKey(): String {
+    private fun getPrivateApiKey(): String {
         return BuildConfig.PRIVATE_KEY
     }
 
@@ -23,8 +22,5 @@ object Common {
         return BuildConfig.URL_BASE
     }
 
-    fun getHash(input: String = getTimeStamp() + getPrivateApiKey() + getPublicApiKey()): String {
-        val md = MessageDigest.getInstance("MD5")
-        return BigInteger(1, md.digest(input.toByteArray())).toString(16).padStart(32, '0')
-    }
+    fun calculateHash() = "${getTimeStamp()}${getPrivateApiKey()}${getPublicApiKey()}".toMD5()
 }
